@@ -24,7 +24,11 @@ And now edit at will!
 Also read the _Front/README.md_ for further info (or just open that folder on
 github and scroll down).
 
+
 ### Inkscape integration
+
+From latest changes in this repository SVGs Inkscape integration was disable to allow compilation with XeLatex.
+If needed can be enable (check preamble.tex) and main document compiled with `lualatex`.
 
 In the pre-compiled pdf you can see the use of the svg package. This package
 uses inkscape to compile SVGs into PDFs. Therefore, if you want to use this
