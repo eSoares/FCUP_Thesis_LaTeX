@@ -206,3 +206,20 @@
     \todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2}
     }
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+
+% change font
+\usepackage{helvet}
+\renewcommand*\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+% this adds some fancy ligatures in math fonts (e.g. used in us)
+%\defaultfontfeatures{ Scale=MatchLowercase, Ligatures=TeX }
+% alternative: set arial
+%\setmainfont{Arial}[Scale=1.0]
+% fix math fonts (e.g. us) in helvet
+\usepackage{unicode-math}
+% based on https://tex.stackexchange.com/a/572292 :
+\usepackage{newtxsf}
+% improvement on typography
+\usepackage{microtype}
+
