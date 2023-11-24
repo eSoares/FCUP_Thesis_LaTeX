@@ -21,12 +21,10 @@
 \usepackage[autostyle]{csquotes}
 
 % Bibliography setup
-% Use the natbib reference package - read up on this to edit the reference
-% style; if you want text (e.g. Smith et al., 2012) for the in-text references
-% (instead of numbers), remove 'numbers'
-\usepackage[square, numbers, comma, sort&compress]{natbib}
-\bibliographystyle{IEEEtranN}  % I actually quite like this one
-% \bibliographystyle{apsrev4-1-etal} % With emphasized titles. ORIGINAL
+\usepackage[backend=biber,citestyle=numeric, sortcites=true, style=ieee, sorting=nyt, backref=true]{biblatex}
+
+\bibliography{Bibliography} % add here other bibliography files that you may want
+
 % Prevent that the first citation is in the ToC
 \usepackage{notoccite}
 
@@ -143,16 +141,8 @@
 % backref makes the bibliography say where the entry was cited.
 % For the print version of the thesis you might wanna set all colors to back
 \usepackage{hyperref}
-\usepackage[hyperpageref]{backref}
 \hypersetup{colorlinks, citecolor=blue, urlcolor=blue,
         linkcolor=blue, breaklinks=true, hypertexnames=true}
-\renewcommand*{\backref}[1]{}
-\renewcommand*{\backrefalt}[4]{%
-    \ifcase #1%
-          \or [Cited on page~#2.]%
-          \else [Cited on pages~#2.]%
-    \fi%
-    }
 % Interesting URL breakings
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-\do\&\do.\do:}
