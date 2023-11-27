@@ -8,6 +8,7 @@
    LaTeX document class]
 \def\baseclass{book}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{\baseclass}}
+\DeclareOption{final}{\newcommand{\finalversion}{{}}}
 \def\@checkoptions#1#2{
   \edef\@curroptions{\@ptionlist{\@currname.\@currext}}
   \@tempswafalse
@@ -525,15 +526,56 @@
 %  }
 % \ExplSyntaxOff
 
-\newcommand\glossaryname{Abbreviations}
+% acronym section
+\newcommand*\acronymfile{Extras/acros.tex}
+\newcommand*\acronymname{Acronyms}
+\@ifpackagewith{babel}{portuguese}{%
+	\addto\captionsportuguese{\renewcommand*\lstlistlistingname{Lista de Blocos de Código}}%
+	\addto\captionsportuguese{\renewcommand*\lstlistingname{Bloco de Código}}%
+	\addto\captionsportuguese{\renewcommand*\acronymname{Acrónimos e Siglas}}%
+}{}
+
+\usepackage{supertabular, multicol}
+\usepackage{scrextend}
+
+% Acronyms package
+\ifcsname finalversion\endcsname
+  % for final version of the document use v3 version
+  \usepackage[]{acro} % changed to v2 because is much faster compiling, in final version change back to v3
+
+  % uncomment this when using acros v3
+  % template to print, based in https://tex.stackexchange.com/a/573698
+  \NewAcroTemplate[list]{twocolumn}{%
+    \begin{multicols}{2}[\acroheading]
+      \acropreamble
+      \begin{labeling}{XXXXX}
+        \acronymsmapF
+          {\item[\bfseries\acrowrite{short}] \acrowrite{list}}
+          {\item\AcroRerun}
+      \end{labeling}
+    \end{multicols}
+  }
+  
+  \acsetup{
+    list/template = twocolumn
+  }
+  
+
+\else
+  % for faster working version, use v2
+% comment this part when using v3 acros
+\usepackage[]{acro}[=v2] % changed to v2 because is much faster compiling, in final version change back to v3
+
+\usepackage{etoolbox} % use etoolbox to reset the acronyms each chapter
+\preto\section\acresetall
 
 \renewenvironment{glossary}
 {
-  \btypeout{\glossaryname}
-  \addtotoc{\glossaryname}
-  \fancyhead[LO]{\textsc{\glossaryname}}
-  \chapter*{\glossaryname
-      \@mkboth{\MakeUppercase\glossaryname}{\MakeUppercase\glossaryname}}
+  \btypeout{\acronymname}
+  \addtotoc{\acronymname}
+  \fancyhead[LO]{\textsc{\acronymname}}
+  \chapter*{\acronymname
+      \@mkboth{\MakeUppercase\acronymname}{\MakeUppercase\acronymname}}
   \setlength{\tabcolsep}{0.1cm}
 	\begin{longtable}[c]{r@{\hskip 1cm}l}
 }
@@ -543,9 +585,7 @@
   \cleardoublepage
 }
 
-\newcommand\abbrev[2]{
-  \vspace{0.15cm} \textbf{#1}	& #2 \\
-}
+\fi%
 
 %-------------------------------------------------------------------------
 %	PHYSICAL CONSTANTS PAGE DESIGN

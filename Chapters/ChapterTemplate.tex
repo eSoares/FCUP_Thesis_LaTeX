@@ -195,3 +195,17 @@ def Hello():
 if __name__ == '__main__':
     Hello()
 \end{lstlisting}
+
+\section{Acronyms}
+What about an acronym? 
+\begin{enumerate}
+  \item Add them in \verb|Extras/acros.tex|;
+  \item Then use them as \verb|\ac{OS}| and they will look like this \ac{OS} the first usage and like \ac{OS} in the second;
+  \item If needed to expand in some specific phrase use \verb|\acl{OS}| and will show \acl{OS};
+  \item If needed the plural form, just use \verb|\acs{OS}| and will render \acp{OS}.
+\end{enumerate}
+
+If needed consult acro package documentation.
+
+\textbf{Before submission} add/uncomment \verb|final| option in Thesis class (check \verb|main.tex|) for proper acronym rendering.
+This is done for performance reasons, latest version of acro package has great flexibility but slow performance in huge acronym lists.
