@@ -9,13 +9,13 @@ All font rights belong to Microsoft.
 
 ## Requisites and Compiling
 
-- Step 1: Edit the front/vars.tex file
-- Step 2: Compile front/main.tex file
-- Step 3: Edit root vars.tex file
-- Step 4: Eventually edit preamble.tex file. If you don't know what do to, just
+- Step 1: Edit the front/vars-front.tex file
+- Step 2: Edit root vars.tex file
+- Step 3: Eventually edit preamble.tex file. If you don't know what do to, just
   don't mess with it.
-- Step 5: Edit root precontent.tex file.
-- Step 4: If you want to make sure that all of your labels are being used, check inside the scripts folder for a way to verify it.
+- Step 4: Edit root precontent.tex file.
+- Step 5: Compile everything (cover and main document) with latexmk, output will be in build/main.pdf.
+- Step 6: If you want to make sure that all of your labels are being used, check inside the scripts folder for a way to verify it.
 
 And now edit at will!
 
@@ -37,8 +37,7 @@ means that Inkscape's install folder must be in the `$PATH$` environment variabl
 
 ## Building in Overleaf
 
-This project was not designed to be used on Overleaf, so the workflow is not very streamlined. However, it is possible to do so. 
-Please refer to [issue #13](https://github.com/ruilvo/FCUP_Thesis_LaTeX/issues/13#issuecomment-1364491199)
+It should build in Overleaf with latexmk, if not check out original project [issue #13](https://github.com/ruilvo/FCUP_Thesis_LaTeX/issues/13#issuecomment-1364491199)
 for guidance.
 
 ## Credits
