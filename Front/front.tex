@@ -45,12 +45,13 @@
 % FONT DIR AND ARIAL FONT SETUP (XELATEX NEEDED)
 \usepackage{fontspec}
 \setmainfont[
-	Path={fonts/},
+	Path={Front/fonts/},
 	UprightFont=*-Regular,
 	ItalicFont=*-Italic,
 	BoldFont=*-Bold,
 	BoldItalicFont=*-Bold-Italic
 ]{Arial}
+
 
 % NEW FONT SIZES FOR TITLE
 \makeatletter
@@ -166,13 +167,13 @@
 		\def\tabbrev{MSc}
 		\def\tcnumber{2}
 		\setlength{\sidew}{54.3mm}
-		\graphicspath{{msc/},{logos/}}
+		\graphicspath{{Front/msc/},{Front/logos/}}
 	}{\ifthenelse{\equal{#1}{phd}}{
 		\def\ttype{Doutoramento}
 		\def\tabbrev{PhD}
 		\def\tcnumber{3}
 		\setlength{\sidew}{56.5mm}
-		\graphicspath{{phd/},{logos/}}
+		\graphicspath{{Front/phd/},{Front/logos/}}
 	}{
 		\PackageWarning{fcup-thesis}{ERROR: thesistype is not well defined. Only 'msc' or 'phd' are possible.}
 	}}
@@ -196,7 +197,7 @@
 %	START DOCUMENT
 %-------------------------------------------------------------------------
 
-\input{vars}
+\input{Front/vars-front}
 
 
 \begin{document}
@@ -414,7 +415,7 @@
 			\end{minipage}
 			\hfill
 			\begin{minipage}[b][120mm][b]{0.41\sidew}
-				\includegraphics[scale=0.4]{front}
+				\includegraphics[scale=0.4]{front-degree}
 			\end{minipage}
 		}
 
@@ -479,7 +480,7 @@
 			\end{minipage}
 			\hfill
 			\begin{minipage}[b][297mm][b]{\sidew}
-				\includegraphics[scale=0.97]{front}
+				\includegraphics[scale=0.97]{front-degree}
 			\end{minipage}
 		}
 	}} % FRONT STOPS HERE
